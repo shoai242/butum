@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Special Message</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d62828;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #d62828;
+            font-size: 35px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="message"></h1>
+    <h2 id="reply"></h2>
+
+    <script>
+        const text1 = "Tau raag koiro na butum 🌚❤️";
+        const text2 = "2008 deua nid te";
+
+        let i = 0;
+        let j = 0;
+
+        function typeFirst() {
+            if (i < text1.length) {
+                document.getElementById("message").innerHTML += text1.charAt(i);
+                i++;
+                setTimeout(typeFirst, 100);
+            } else {
+                setTimeout(typeSecond, 800);
+            }
+        }
+
+        function typeSecond() {
+            if (j < text2.length) {
+                document.getElementById("reply").innerHTML += text2.charAt(j);
+                j++;
+                setTimeout(typeSecond, 100);
+            }
+        }
+
+        typeFirst();
+    </script>
+
+</body>
+</html>
