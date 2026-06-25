@@ -16,66 +16,61 @@
             text-align: center;
         }
 
-        h1 {
+        h1, h2, h3, h4, h5 {
             color: #d62828;
-            font-size: 40px;
-            margin-bottom: 20px;
+            margin: 10px;
         }
 
-        h2 {
-            color: #d62828;
+        h1 {
             font-size: 40px;
-            margin-top: 20px;
         }
-        
+
+        h2, h3, h4, h5 {
+            font-size: 28px;
+        }
     </style>
 </head>
 
 <body>
 
     <h1 id="message"></h1>
-    <h2 id="reply"></h2>
-    <h3 id="reply"></h3>
-    <h4 id="reply"></h4>
-    <h5 id="reply"></h5>
-
+    <h2 id="reply1"></h2>
+    <h3 id="reply2"></h3>
+    <h4 id="reply3"></h4>
+    <h5 id="reply4"></h5>
 
     <script>
         const text1 = "Hoise butum r raag korte hobe na 🌚❤️";
         const text2 = "2008 deua nid te";
         const text3 = "raag korle tmk khub bhalo lage bises kore raag kore bola ktha ta";
-        const text4 = "thappor dibo ekta🌚";
-        const text5 = "ki j sundor lge tmk💖";
+        const text4 = "thappor dibo ekta 🌚";
+        const text5 = "ki j sundor lge tmk 💖";
 
-        let i = 0;
-        let j = 0;
+        function typeText(id, text, speed, callback) {
+            let i = 0;
 
-        function typeFirst() {
-            if (i < text1.length) {
-                document.getElementById("message").innerHTML += text1.charAt(i);
-                i++;
-                setTimeout(typeFirst, 100);
-            } else {
-                setTimeout(typeSecond, 300);
-            } else {
-                setTimeout(typethird, 500);
-            } else { 
-                setTimeout(typetorth, 700);
-            } else {
-                setTimeout(typefifth, 900);
-               
-            
-        }
-
-        function typeSecond() {
-            if (j < text2.length) {
-                document.getElementById("reply").innerHTML += text2.charAt(j);
-                j++;
-                setTimeout(typeSecond, 100);
+            function typing() {
+                if (i < text.length) {
+                    document.getElementById(id).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                } else if (callback) {
+                    setTimeout(callback, 300);
+                }
             }
+
+            typing();
         }
 
-        typeFirst();
+        typeText("message", text1, 100, function () {
+            typeText("reply1", text2, 100, function () {
+                typeText("reply2", text3, 100, function () {
+                    typeText("reply3", text4, 100, function () {
+                        typeText("reply4", text5, 100);
+                    });
+                });
+            });
+        });
     </script>
 
 </body>
